@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <header>
+      <% if user_signed_in? %>
+        <p> <%= current_user.name %>さん、ようこそ</p>
+      <% end %>
+    </header>
+    
     <%= yield %>
   </body>
 </html>

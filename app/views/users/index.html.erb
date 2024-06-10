@@ -1,0 +1,19 @@
+<p style= "color: green"><%= notice %></p>
+
+<h1>ユーザー一覧</h1>
+
+<div id="users">
+  <% @users.each do |user| %>
+    <p>
+      <% if user_signed_in? && current_user.name == user.name %>
+        <%= link_to"名前", mypage_path%>: <%= user.name%>
+      <%elsif%>
+        <%= link_to"名前", user_path(user)%>: <%= user.name %></p>
+      <% end %>
+    </p>
+    <p>Email: <%= user.email %></p>
+    
+  <% end %>
+</div>
+
+<p><%=link_to 'topページ' ,toppage_path%>

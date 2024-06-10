@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+ get :toppage, to:"toppage#index"
   get :mypage, to:'mypage#index'
-  get :toppage, to:"toppage#index"
+ 
+  devise_for :users
+  resources :users, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  
+  
 end
