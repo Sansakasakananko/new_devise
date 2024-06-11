@@ -6,7 +6,6 @@ class User < ApplicationRecord
   validates :name, length: {minimum: 2, maximum: 20}
 has_one_attached :photo
 
-has_many :post_users
-has_many :posts, through: :post_users
+
 
 end

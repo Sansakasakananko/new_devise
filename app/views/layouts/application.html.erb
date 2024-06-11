@@ -27,6 +27,8 @@
     <header>
       <% if user_signed_in? %>
         <p> <%=link_to current_user.name ,mypage_path%>さん、ようこそ</p>
+      <%else%>
+        <p> ゲストさん</p>
       <% end %>
     </header>
     

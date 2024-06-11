@@ -1,9 +1,28 @@
-<h1>New post</h1>
+<h1>新規投稿</h1>
 
-<%= render "form", post: @post %>
+<%= form_with(model: @post, local: true) do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post form being saved:</h2>
 
-<br>
+      <ul>
+        <% @post.errors.full_message.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<div>
-  <%= link_to "Back to posts", posts_path %>
-</div>
+  <div class="field">
+    <%= form.label :context, "投稿" %>
+    <%= form.text_area :context %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "登録する" %>
+  </div>
+<% end %>
+
+<%= link_to '一覧に戻る', posts_path %>
+
+
