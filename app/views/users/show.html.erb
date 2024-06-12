@@ -5,6 +5,12 @@
 <div id="user">
  
     <p><%= link_to"名前", user_path(@user)%>: <%= @user.name %></p>
+    <p>
+      Photo:
+        <% if @user.photo.attached?%>
+        <%= image_tag @user.icon(400,400)%>
+        <% end %>
+    </p>
     <p>メールアドレス: <%= @user.email %></p>
 </div>
 

@@ -5,9 +5,9 @@
 <p><%= current_user.name if user_signed_in? %>さん</p>
 
 <p>
-    Photo:
+    アイコン:
     <% if @user.photo.attached?%>
-    <%= image_tag @user.photo%>
+    <%= image_tag @user.icon(200,200)%>
     <% end %>
 </p>
 <p>名前: <%= current_user.name %></p>
