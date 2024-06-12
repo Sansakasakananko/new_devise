@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :move_to_signed_in, except: [:index]
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
@@ -66,6 +67,12 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:context).merge(user_id: current_user.id)
+      params.require(:post).permit(:context, :photo).merge(user_id: current_user.id)
+    end
+
+    def move_to_signed_in
+      unless user_signed_in?
+        redirect_to new_user_session_path
+      end
     end
 end

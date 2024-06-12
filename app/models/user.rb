@@ -3,8 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :recoverable and :omniauthable
   devise :database_authenticatable, :registerable,
          :trackable, :rememberable, :validatable
-  validates :name, length: {minimum: 2, maximum: 20}
-has_one_attached :photo
+  validates :name, presence: true,  length: {minimum: 2, maximum: 20}
+  has_one_attached :photo
 
 
 

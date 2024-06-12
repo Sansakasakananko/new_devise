@@ -21,24 +21,25 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      format.html { redirect_to user_url(@user), notice: "登録完了しました。" }
     else
-      render :new
+      format.html { render :new, status: :unprocessable_entity }
     end
-  end
+end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to mypage_path, notice: 'User was successfully updated.'
+      redirect_to @user, notice: '編集完了しました。'
     else
       render :edit
     end
+
   end
 
   def destroy
     @user.destroy
-    redirect_to users_url, notice: 'User was successfully destroyed.'
+    redirect_to users_url, notice: '削除完了しました。'
   end
 
 

@@ -4,7 +4,12 @@
 <p>ここはマイページです</p>
 <p><%= current_user.name if user_signed_in? %>さん</p>
 
- 
+<p>
+    Photo:
+    <% if @user.photo.attached?%>
+    <%= image_tag @user.photo%>
+    <% end %>
+</p>
 <p>名前: <%= current_user.name %></p>
     <p>メールアドレス: <%= current_user.email %></p>
 
