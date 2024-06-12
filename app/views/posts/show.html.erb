@@ -1,4 +1,14 @@
 <h2>投稿詳細</h2>
-<p><%= @post.user.name%>さん</p>
-<p><%= @post.context %></p>
+<p>名前：<%= @post.user.name%>さん</p>
+<p>投稿内容：<%= @post.context %></p>
+<p>
+  <% if @post.photo.attached? %>
+    投稿画像：<%= image_tag (post.picture(600, 600)) %>
+  <% else %>
+    画像がありません
+  <% end %>
+</p>
+
+
+
 <%= link_to "一覧へ", posts_path %>
